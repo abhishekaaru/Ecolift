@@ -22,9 +22,8 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="80dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/profile1" />
 
@@ -34,72 +33,97 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.7"
+            android:layout_weight="3"
             android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signup_name_lable"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                android:hint="Name"
+                app:startIconDrawable="@drawable/person_icon"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signup_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textAutoComplete|textCapWords"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-                <LinearLayout
-                    android:layout_width="315dp"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/email_outline_layout">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/book_mobile_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                android:hint="Mobile no."
+                app:startIconDrawable="@drawable/phone_icon"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:layout_constraintBottom_toTopOf="@+id/signup_email_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/signup_name_lable">
 
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/person_icon"
-                        android:layout_margin="5dp"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/book_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
-                        android:id="@+id/login_email_btn"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signup_email_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                android:hint="Email"
+                app:startIconDrawable="@drawable/mail_icon"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/book_mobile_label">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signup_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/signup_password_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:hint="Password"
+                    app:endIconMode="password_toggle"
+                    app:startIconDrawable="@drawable/ic_baseline_lock_24"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/signup_email_label">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/signup_password"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:ems="10"
-                        android:inputType="textEmailAddress"
-                        android:hint="Email"
-                        android:background="@null"
-                        android:textAlignment="center"
-                        android:paddingRight="20dp"/>
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="315dp"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/email_outline_layout">
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/ic_baseline_lock_24"
-                        android:layout_margin="5dp"/>
-
-                    <EditText
-                        android:id="@+id/login_password_btn"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ems="10"
                         android:inputType="textPassword"
-                        android:hint="Password"
-                        android:background="@null"
-                        android:textAlignment="center"
-                        android:paddingRight="15dp"/>
+                        android:singleLine="true" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                </LinearLayout>
-
-
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
