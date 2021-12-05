@@ -22,4 +22,13 @@ class SignUpActivity : AppCompatActivity() {
 
 
     }
+
+
+    fun createNewUser(){
+
+
+
+    }
+
+
 }

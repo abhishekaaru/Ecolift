@@ -1,5 +1,7 @@
 package com.example.ecolift
 
+import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
@@ -16,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val  rlTop = findViewById<LinearLayout>(R.id.leftToRightSwipe)
-//        rlTop.setOnTouchListener(RelativeLayoutTouchListener(this))
-        replaceFragment(homeFragment)
+        supportActionBar?.hide()
+        this.window.statusBarColor = Color.rgb(33,34,38)
 
+        replaceFragment(homeFragment)
         val bottomBar: BottomNavigationView = findViewById(R.id.main_menu)
         // calling replace funtion if id selected
         bottomBar.setOnNavigationItemSelectedListener {
@@ -30,10 +32,16 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-
-
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity()
+//        val exitIntent = Intent(Intent.ACTION_MAIN)
+//        exitIntent.addCategory(Intent.CATEGORY_HOME)
+//        exitIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+//        startActivity(exitIntent)
+    }
 
     // called when you want to replace fragment
     private fun replaceFragment(fragment: Fragment){

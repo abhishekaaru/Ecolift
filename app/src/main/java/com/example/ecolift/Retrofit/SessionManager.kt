@@ -28,4 +28,10 @@ class SessionManager(context: Context) {
         return prefs.getString(USER_TOKEN, null)
     }
 
+    fun clearAllTokens(){
+        val editor = prefs.edit()
+        editor.clear()
+        editor.commit()
+    }
+
 }
