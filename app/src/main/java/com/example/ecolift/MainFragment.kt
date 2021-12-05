@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.ecolift.BookRideActivities.BookActivity
+import com.example.ecolift.BookRideActivities.SearchActivity
 import com.example.ecolift.databinding.FragmentMainBinding
 
 import com.example.ecolift.PostRideActivities.PostActivity
@@ -28,8 +30,11 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+//        binding.BookRideBtn.setOnClickListener {
+//            findNavController().navigate(R.id.action_mainFragment_to_searchFragment)
+//        }
         binding.BookRideBtn.setOnClickListener{
-            val intent = Intent(requireContext(), BookActivity::class.java)
+            val intent = Intent(requireContext(), SearchActivity::class.java)
             startActivity(intent)
         }
         binding.PostRideBtn.setOnClickListener{

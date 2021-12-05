@@ -51,4 +51,6 @@
         android:name="com.example.ecolift.BookingFragment"
         android:label="fragment_booking"
         tools:layout="@layout/fragment_booking" />
+
+
 </navigation>

@@ -10,20 +10,20 @@ import kotlinx.coroutines.launch
 class EcoliftViewModel(private val postDao:PostDao):ViewModel() {
 
 
-    fun insertData_VM(postPerson: PostPerson) = viewModelScope.launch {
-
-        postDao.insert(postPerson)
-    }
-
-    fun deleteAllData_VM() = viewModelScope.launch {
-
-        postDao.deleteAllOwner()
-    }
-
-    fun getMatchedData_VM(destination:String) = viewModelScope.launch {
-
-        postDao.getMatchedRide(destination)
-    }
+//    fun insertData_VM(postPerson: PostPerson) = viewModelScope.launch {
+//
+//        postDao.insert(postPerson)
+//    }
+//
+//    fun deleteAllData_VM() = viewModelScope.launch {
+//
+//        postDao.deleteAllOwner()
+//    }
+//
+//    fun getMatchedData_VM(destination:String) = viewModelScope.launch {
+//
+//        postDao.getMatchedRide(destination)
+//    }
 
 
 }
