@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class EcoliftViewModel(private val postDao:PostDao):ViewModel() {
 
-
+//
 //    fun insertData_VM(postPerson: PostPerson) = viewModelScope.launch {
 //
 //        postDao.insert(postPerson)

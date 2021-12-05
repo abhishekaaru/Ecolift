@@ -17,6 +17,9 @@
             android:name=".BookRideActivities.SearchActivity"
             android:exported="false" />
         <activity
+            android:name=".StartActivities.SignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".BookRideActivities.BookActivity"
             android:exported="false" />
         <activity

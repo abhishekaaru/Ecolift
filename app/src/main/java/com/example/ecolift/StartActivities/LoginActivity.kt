@@ -4,20 +4,27 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.view.View
+import android.widget.*
+import androidx.lifecycle.ViewModelProvider
 import com.example.ecolift.Data_Classes.LoginRequest
 import com.example.ecolift.Data_Classes.LoginResponse
 import com.example.ecolift.MainActivity
 import com.example.ecolift.R
+import com.example.ecolift.Repository.Ecolift_Repository
 import com.example.ecolift.Retrofit.ServiceBuilder
 import com.example.ecolift.Retrofit.SessionManager
+import com.example.ecolift.viewModels.EcoliftViewModel
+import com.example.ecolift.viewModels.EcoliftViewModelFactory
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
+
+    lateinit var MainViewModel: EcoliftViewModel
+    lateinit var sessionManager: SessionManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -26,33 +33,56 @@ class LoginActivity : AppCompatActivity() {
 
         val login_btn = findViewById<Button>(R.id.login_btn)
         val create_btn = findViewById<Button>(R.id.create_btn)
-        val intent_to_skip = Intent(this, MainActivity::class.java)
+        val forget_btn = findViewById<TextView>(R.id.forget_pass_btn)
 
-        login_btn.setOnClickListener {
-            Login()
-        }
 
         create_btn.setOnClickListener {
-            startActivity(intent_to_skip)
+            startActivity(Intent(this,SignUpActivity::class.java))
+            finish()
+        }
+
+        sessionManager = SessionManager(this)
+        val token = sessionManager.fetchAuthToken()
+
+        if (token != null && token.isNotEmpty()) {
+            intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        } else {
+
+            val getinterface = ServiceBuilder().retrofitBuilder
+//            val repository = Ecolift_Repository(getinterface)
+//            MainViewModel = ViewModelProvider(
+//                this,
+//                EcoliftViewModelFactory(repository)
+//            ).get(EcoliftViewModel::class.java)
+
+
+
+            login_btn.setOnClickListener {
+                Login()
+            }
+
+            forget_btn.setOnClickListener{
+                startActivity(Intent(this,MainActivity::class.java))
+                finish()
+            }
+
         }
 
 
     }
 
-
-    private fun Login(){
+    private fun Login() {
 
         val retrofit = ServiceBuilder()
         val retrofitBuilder = retrofit.retrofitBuilder
-        val sessionManager = SessionManager(this)
 
         val emailEditText = findViewById<EditText>(R.id.login_email_btn)
         val passwordEditText = findViewById<EditText>(R.id.login_password_btn)
+        val progressBar = findViewById<ProgressBar>(R.id.login_progress_bar)
+        progressBar.visibility = View.VISIBLE
 
-
-
-
-        if(isEntryValid()){
+        if (isEntryValid()) {
 
             val intent = Intent(this, MainActivity::class.java)
             val email = emailEditText.text.toString().trim()
@@ -60,28 +90,41 @@ class LoginActivity : AppCompatActivity() {
 
             retrofitBuilder.login(LoginRequest(email = email, password = password)).enqueue(object :
                 Callback<LoginResponse> {
-                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                    val loginResponse = response.body()!!
-                    val myStringBuilder = StringBuilder()
+                override fun onResponse(
+                    call: Call<LoginResponse>,
+                    response: Response<LoginResponse>
+                ) {
 
-                    sessionManager.saveAuthToken(loginResponse.authToken)
+                    if(response.isSuccessful){
+
+                        val loginResponse = response.body()!!
+                        val myStringBuilder = StringBuilder()
+                        progressBar.visibility = View.GONE
+                        sessionManager.saveAuthToken(loginResponse.authToken)
 
 
-                    Log.d("success login",myStringBuilder.append(loginResponse.user).toString())
-                    Toast.makeText(this@LoginActivity, "Logged In", Toast.LENGTH_SHORT).show()
-                    startActivity(intent)
+                        Log.d("success login", myStringBuilder.append(loginResponse.user).toString())
+                        Toast.makeText(this@LoginActivity, "Logged In", Toast.LENGTH_SHORT).show()
+                        startActivity(intent)
+                        finish()
+                    }
+                    else{
+                        progressBar.visibility = View.GONE
+                        Toast.makeText(this@LoginActivity, "Wrong Credential", Toast.LENGTH_SHORT).show()
+                    }
+
                 }
 
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    Log.d("unsucces full login","this is not logged in")
-                    Toast.makeText(this@LoginActivity, "Something Wrong", Toast.LENGTH_SHORT).show()
+                    progressBar.visibility = View.GONE
+                    Log.d("unsucces full login", t.toString())
+                    Toast.makeText(this@LoginActivity, "Connection Problem", Toast.LENGTH_LONG).show()
 
                 }
 
             })
-        }
-        else{
-
+        } else {
+            progressBar.visibility = View.GONE
             Toast.makeText(this, "Fill Details Properly", Toast.LENGTH_SHORT).show()
         }
 
@@ -89,7 +132,7 @@ class LoginActivity : AppCompatActivity() {
 
 
     // checking that is any form content is blank or not. if blank return false or true
-    private fun isEntryValid():Boolean{
+    private fun isEntryValid(): Boolean {
 
         val emailEditText = findViewById<EditText>(R.id.login_email_btn)
         val passwordEditText = findViewById<EditText>(R.id.login_password_btn)
