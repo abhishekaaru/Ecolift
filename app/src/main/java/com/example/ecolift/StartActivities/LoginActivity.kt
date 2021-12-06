@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.google.android.material.textfield.TextInputEditText
 import android.view.View
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
@@ -69,8 +70,8 @@ class LoginActivity : AppCompatActivity() {
         val retrofit = ServiceBuilder()
         val retrofitBuilder = retrofit.retrofitBuilder
 
-        val emailEditText = findViewById<EditText>(R.id.login_email_btn)
-        val passwordEditText = findViewById<EditText>(R.id.login_password_btn)
+        val emailEditText = findViewById<TextInputEditText>(R.id.login_email_btn)
+        val passwordEditText = findViewById<TextInputEditText>(R.id.login_password_btn)
         val progressBar = findViewById<ProgressBar>(R.id.login_progress_bar)
         progressBar.visibility = View.VISIBLE
 
@@ -126,11 +127,11 @@ class LoginActivity : AppCompatActivity() {
     // checking that is any form content is blank or not. if blank return false or true
     private fun isEntryValid(): Boolean {
 
-        val emailEditText = findViewById<EditText>(R.id.login_email_btn)
-        val passwordEditText = findViewById<EditText>(R.id.login_password_btn)
+        val emailEditText = findViewById<TextInputEditText>(R.id.login_email_btn)
+        val passwordEditText = findViewById<TextInputEditText>(R.id.login_password_btn)
 
-        return !(emailEditText.text.isBlank()
-                || passwordEditText.text.isBlank())
+        return !(emailEditText.text!!.isBlank()
+                || passwordEditText.text!!.isBlank())
 
     }
 
