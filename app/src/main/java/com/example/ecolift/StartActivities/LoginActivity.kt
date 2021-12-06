@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
 
         create_btn.setOnClickListener {
             startActivity(Intent(this,SignUpActivity::class.java))
-            finish()
+            this.finish()
         }
 
         sessionManager = SessionManager(this)
@@ -48,14 +48,6 @@ class LoginActivity : AppCompatActivity() {
             intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         } else {
-
-            val getinterface = ServiceBuilder().retrofitBuilder
-//            val repository = Ecolift_Repository(getinterface)
-//            MainViewModel = ViewModelProvider(
-//                this,
-//                EcoliftViewModelFactory(repository)
-//            ).get(EcoliftViewModel::class.java)
-
 
 
             login_btn.setOnClickListener {
