@@ -1,6 +1,7 @@
 package com.example.ecolift.StartActivities
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -31,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         supportActionBar?.hide()
+        this.window.statusBarColor = Color.rgb(12,104,55)
 
         val login_btn = findViewById<Button>(R.id.login_btn)
         val create_btn = findViewById<Button>(R.id.create_btn)
