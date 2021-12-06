@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import com.example.ecolift.Data_Classes.User
 import com.example.ecolift.Retrofit.ServiceBuilder
 import com.example.ecolift.Retrofit.SessionManager
 import com.example.ecolift.StartActivities.LoginActivity
@@ -33,15 +34,54 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentProfileBinding.inflate(inflater,container,false)
 
+        _binding = FragmentProfileBinding.inflate(inflater,container,false)
+        getProfile()
         binding.logoutBtn.setOnClickListener {
             logout()
         }
-9
         return binding.root
     }
 
+
+    fun getProfile(){
+
+        val retrofit = ServiceBuilder()
+        val retrofitBuilder = retrofit.retrofitBuilder
+        val sessionManager = SessionManager(this.requireContext())
+        binding.progressBar.visibility = View.VISIBLE
+
+
+        retrofitBuilder.getProfile(token = "Bearer ${sessionManager.fetchAuthToken()}")
+            .enqueue(object : Callback<User>{
+                override fun onResponse(
+                    call: Call<User>,
+                    response: Response<User>
+                ) {
+
+                    if(response.isSuccessful){
+                        binding.progressBar.visibility = View.GONE
+                        val responseBody = response.body()!!
+                        binding.userName.text = responseBody.name
+                        binding.userEmail.text = responseBody.email
+                        binding.userMobile.text = responseBody.mobile
+                    }
+                    else{
+                        binding.progressBar.visibility = View.GONE
+                        Log.d("unsucces",response.toString())
+                        Toast.makeText(requireContext(), "Something Wrong", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<User>, t: Throwable) {
+                    binding.progressBar.visibility = View.GONE
+                    Log.d("unsucces",t.toString())
+                    Toast.makeText(requireContext(), "Connection Problem", Toast.LENGTH_SHORT).show()
+                }
+
+            })
+
+    }
 
     fun logout(){
 
