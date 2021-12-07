@@ -1,11 +1,10 @@
-package com.example.ecolift
+package com.example.ecolift.MainActivities
 
-import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import com.example.ecolift.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 

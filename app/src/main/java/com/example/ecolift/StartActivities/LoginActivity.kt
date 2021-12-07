@@ -1,22 +1,20 @@
 package com.example.ecolift.StartActivities
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.google.android.material.textfield.TextInputEditText
 import android.view.View
 import android.widget.*
-import androidx.lifecycle.ViewModelProvider
 import com.example.ecolift.Data_Classes.LoginRequest
 import com.example.ecolift.Data_Classes.LoginResponse
-import com.example.ecolift.MainActivity
+import com.example.ecolift.MainActivities.MainActivity
 import com.example.ecolift.R
-import com.example.ecolift.Repository.Ecolift_Repository
 import com.example.ecolift.Retrofit.ServiceBuilder
 import com.example.ecolift.Retrofit.SessionManager
 import com.example.ecolift.viewModels.EcoliftViewModel
-import com.example.ecolift.viewModels.EcoliftViewModelFactory
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         supportActionBar?.hide()
+        this.window.statusBarColor = Color.rgb(12,104,55)
 
         val login_btn = findViewById<Button>(R.id.login_btn)
         val create_btn = findViewById<Button>(R.id.create_btn)
@@ -56,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             forget_btn.setOnClickListener{
-                startActivity(Intent(this,MainActivity::class.java))
+                startActivity(Intent(this, MainActivity::class.java))
                 finish()
             }
 

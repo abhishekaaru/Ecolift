@@ -1,6 +1,7 @@
 package com.example.ecolift.StartActivities
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +9,7 @@ import android.view.View
 import android.widget.*
 import com.example.ecolift.Data_Classes.CreateUser
 import com.example.ecolift.Data_Classes.LoginResponse
-import com.example.ecolift.MainActivity
+import com.example.ecolift.MainActivities.MainActivity
 import com.example.ecolift.R
 import com.example.ecolift.Retrofit.ServiceBuilder
 import com.example.ecolift.Retrofit.SessionManager
@@ -27,6 +28,7 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
 
         supportActionBar?.hide()
+        this.window.statusBarColor = Color.rgb(12,104,55)
 
         val login_back_btn = findViewById<Button>(R.id.login_back_btn)
         val signUpBtn = findViewById<Button>(R.id.signUp_btn)

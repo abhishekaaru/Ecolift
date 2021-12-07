@@ -1,4 +1,4 @@
-package com.example.ecolift
+package com.example.ecolift.MainActivities
 
 import android.content.Intent
 import android.os.Bundle

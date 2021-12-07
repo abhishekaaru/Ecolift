@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StartActivities.SignUpActivity">
+    tools:context=".StartActivities.SignUpActivity"
+    android:background="@drawable/mainbackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,7 +49,6 @@
                 android:layout_marginTop="@dimen/margin"
                 android:hint="Name"
                 app:startIconDrawable="@drawable/person_icon"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -69,7 +69,6 @@
                 android:layout_marginTop="@dimen/margin"
                 android:hint="Mobile no."
                 app:startIconDrawable="@drawable/phone_icon"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:layout_constraintBottom_toTopOf="@+id/signup_email_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="phone"
-                    android:singleLine="true" />
+                    android:singleLine="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -90,7 +89,6 @@
                 android:layout_marginTop="@dimen/margin"
                 android:hint="Email"
                 app:startIconDrawable="@drawable/mail_icon"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/book_mobile_label">
@@ -111,7 +109,6 @@
                     android:hint="Password"
                     app:endIconMode="password_toggle"
                     app:startIconDrawable="@drawable/ic_baseline_lock_24"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/signup_email_label">
@@ -169,6 +166,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Already Have Account !"
+                    android:textColor="@color/white"
                     android:layout_marginBottom="4dp"/>
 
                 <androidx.appcompat.widget.AppCompatButton
