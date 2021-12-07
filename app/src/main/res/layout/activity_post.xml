@@ -200,65 +200,6 @@
                                 android:singleLine="true" />
                         </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/post_name_label"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin"
-                            android:hint="Name"
-                            app:startIconDrawable="@drawable/person_icon"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/post_time_label">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/post_name"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:singleLine="true" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/post_mobile_label"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin"
-                            android:hint="Mobile no."
-                            app:startIconDrawable="@drawable/phone_icon"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            app:layout_constraintBottom_toTopOf="@+id/post_email_label"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/post_name_label">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/post_mobile"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:inputType="number"
-                                android:singleLine="true" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/post_email_label"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin"
-                            android:hint="Email"
-                            app:startIconDrawable="@drawable/mail_icon"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            app:layout_constraintBottom_toTopOf="@+id/post_seat_label"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/post_mobile_label">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/post_email"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:singleLine="true"/>
-                        </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/post_seat_label"
@@ -268,9 +209,9 @@
                             android:hint="Seat"
                             app:startIconDrawable="@drawable/group_icon"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            app:layout_constraintBottom_toTopOf="@+id/post_action"
+                            app:layout_constraintBottom_toTopOf="@+id/post_action_btn"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/post_email_label">
+                            app:layout_constraintTop_toBottomOf="@+id/post_time_label">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/post_seat"
@@ -292,7 +233,7 @@
                             app:layout_constraintBottom_toBottomOf="@+id/post_seat_label"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@id/post_seat_label"
-                            app:layout_constraintTop_toBottomOf="@+id/post_email_label">
+                            app:layout_constraintTop_toBottomOf="@+id/post_time_label">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/post_price"
@@ -303,17 +244,17 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <Button
-                            android:id="@+id/post_action"
+                            android:id="@+id/post_action_btn"
                             android:layout_width="200dp"
-                            android:layout_height="45dp"
+                            android:layout_height="48dp"
                             android:layout_marginTop="32dp"
+                            android:background="@drawable/login_btn_background"
+                            android:fontFamily="@font/julius_sans_one"
                             android:text="P O S T"
                             android:textStyle="bold"
-                            android:fontFamily="@font/julius_sans_one"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/post_seat_label"
-                            android:background="@drawable/login_btn_background"/>
+                            app:layout_constraintTop_toBottomOf="@+id/post_seat_label" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

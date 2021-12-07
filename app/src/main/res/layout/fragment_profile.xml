@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".MainActivities.ProfileFragment">
 
 
     <LinearLayout
@@ -21,15 +21,28 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
                     android:layout_height="match_parent"
                     android:text="Profile"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:gravity="center"/>
+
+                <Button
+                    android:id="@+id/logout_btn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/julius_sans_one"
+                    android:text="LOGOUT"
+                    android:textStyle="bold"/>
 
 
 
@@ -106,26 +119,35 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
-            android:background="@drawable/form_layout_background">
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/post_recyclerview_background">
 
+            <ProgressBar
+                android:id="@+id/progressBarForList"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_margin="10dp"/>
 
-
-
-            <ScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="20dp">
+                android:orientation="vertical"
+                android:layout_marginBottom="73dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/allPostedrideRecylerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="20dp"
+                    android:layout_marginBottom="34dp"
+                    tools:listitem="@layout/allposted_ride_recyclerview_format"/>
+
+            </LinearLayout>
 
 
-                <Button
-                    android:id="@+id/logout_btn"
-                    android:layout_width="200dp"
-                    android:layout_height="45dp"
-                    android:fontFamily="@font/julius_sans_one"
-                    android:text="L O G O U T"
-                    android:textStyle="bold"/>
-
-            </ScrollView>
 
 
         </LinearLayout>

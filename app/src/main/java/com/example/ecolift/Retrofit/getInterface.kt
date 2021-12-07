@@ -23,6 +23,9 @@ interface getInterface {
     fun getProfile(@Header("Authorization")  token:String):Call<User>
 
     @POST("/CreateRide")
-    fun createRide(@Header("Authorization")  token:String,@Body request: CreateRide ):Call<ResponseBody>
+    fun createRide(@Header("Authorization")  token:String, @Body request: CreateRide ):Call<ResponseBody>
+
+    @GET("/allRide")
+    fun getAllPostedRide(@Header("Authorization")  token:String):Call<List<AllPostedRide>>
 
 }

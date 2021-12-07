@@ -1,4 +1,4 @@
-package com.example.ecolift
+package com.example.ecolift.MainActivities
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,16 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ecolift.Data_Classes.AllPostedRide
 import com.example.ecolift.Data_Classes.User
 import com.example.ecolift.Retrofit.ServiceBuilder
 import com.example.ecolift.Retrofit.SessionManager
 import com.example.ecolift.StartActivities.LoginActivity
-import com.example.ecolift.databinding.FragmentMainBinding
 import com.example.ecolift.databinding.FragmentProfileBinding
-import com.example.ecolift.viewModels.EcoliftApplication
-import com.example.ecolift.viewModels.EcoliftViewModel
-import com.example.ecolift.viewModels.EcoliftViewModelFactory
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,14 +34,62 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-
         _binding = FragmentProfileBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         getProfile()
+        getAllPostedRide()
         binding.logoutBtn.setOnClickListener {
             logout()
         }
-        return binding.root
+
+    }
+
+    fun getAllPostedRide(){
+
+        val retrofit = ServiceBuilder()
+        val retrofitBuilder = retrofit.retrofitBuilder
+        val sessionManager = SessionManager(this.requireContext())
+        binding.progressBarForList.visibility = View.VISIBLE
+
+
+        retrofitBuilder.getAllPostedRide(token = "Bearer ${sessionManager.fetchAuthToken()}")
+            .enqueue(object : Callback<List<AllPostedRide>>{
+                override fun onResponse(
+                    call: Call<List<AllPostedRide>>,
+                    response: Response<List<AllPostedRide>>
+                ) {
+
+                    if(response.isSuccessful){
+
+                        binding.progressBarForList.visibility = View.GONE
+                        val responseBody = response.body()!!
+                        binding.allPostedrideRecylerView.layoutManager = LinearLayoutManager(requireContext())
+                        val adapter = PostRideListRecyclerView()
+                        adapter.updateAll(responseBody)
+                        binding.allPostedrideRecylerView.adapter = adapter
+                        Log.d("succes", responseBody.toString())
+
+                    }
+                    else{
+                        binding.progressBarForList.visibility = View.GONE
+                        Log.d("unsucces",response.toString())
+                        Toast.makeText(requireContext(), "Something Wrong", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<List<AllPostedRide>>, t: Throwable) {
+                    binding.progressBarForList.visibility = View.GONE
+                    Log.d("unsucces",t.toString())
+                    Toast.makeText(requireContext(), "Connection Problem", Toast.LENGTH_SHORT).show()
+                }
+
+            })
+
     }
 
 

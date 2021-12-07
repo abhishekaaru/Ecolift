@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.*
 import com.example.ecolift.Data_Classes.CreateUser
 import com.example.ecolift.Data_Classes.LoginResponse
-import com.example.ecolift.MainActivity
+import com.example.ecolift.MainActivities.MainActivity
 import com.example.ecolift.R
 import com.example.ecolift.Retrofit.ServiceBuilder
 import com.example.ecolift.Retrofit.SessionManager

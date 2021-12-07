@@ -8,16 +8,13 @@ import android.util.Log
 import com.google.android.material.textfield.TextInputEditText
 import android.view.View
 import android.widget.*
-import androidx.lifecycle.ViewModelProvider
 import com.example.ecolift.Data_Classes.LoginRequest
 import com.example.ecolift.Data_Classes.LoginResponse
-import com.example.ecolift.MainActivity
+import com.example.ecolift.MainActivities.MainActivity
 import com.example.ecolift.R
-import com.example.ecolift.Repository.Ecolift_Repository
 import com.example.ecolift.Retrofit.ServiceBuilder
 import com.example.ecolift.Retrofit.SessionManager
 import com.example.ecolift.viewModels.EcoliftViewModel
-import com.example.ecolift.viewModels.EcoliftViewModelFactory
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -58,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             forget_btn.setOnClickListener{
-                startActivity(Intent(this,MainActivity::class.java))
+                startActivity(Intent(this, MainActivity::class.java))
                 finish()
             }
 
