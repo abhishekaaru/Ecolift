@@ -16,9 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.ecolift.BookRideActivities.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
+        android:label="fragment_search" >
         <action
             android:id="@+id/action_searchFragment_to_availableRideList"
             app:destination="@id/availableRideList" />

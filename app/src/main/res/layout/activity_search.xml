@@ -21,7 +21,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="0.5">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -38,58 +38,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:layout_marginBottom="10dp">
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    tools:src="@tools:sample/avatars"
-                    android:layout_marginLeft="30dp"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="match_parent"
-                    android:text="Profile"
-                    android:gravity="center|left"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:layout_marginRight="30sp"/>
-
-            </LinearLayout>
-
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:background="@drawable/form_layout_background">
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_weight="3">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp">
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/search_pickup_lable"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin"
                         android:hint="Pickup"
                         app:startIconDrawable="@drawable/pickup_dot"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -99,7 +63,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:inputType="textAutoComplete|textCapWords"
-                            android:singleLine="true" />
+                            android:background="@drawable/search_ride_background" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -109,32 +73,62 @@
                         android:layout_marginTop="@dimen/margin"
                         android:hint="Destination"
                         app:startIconDrawable="@drawable/destination_dot"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/search_pickup_lable">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/post_dest"
+                            android:id="@+id/search_dest"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:singleLine="true" />
+                            android:background="@drawable/search_ride_background" />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
-                    <Button
-                        android:id="@+id/search_action"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="32dp"
-                        android:text="Search"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/search_dest_lable" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </ScrollView>
+                <Button
+                    android:id="@+id/search_action_btn"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/login_btn_background"
+                    android:fontFamily="@font/julius_sans_one"
+                    android:text="SEARCH"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/search_dest_lable"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.8"
+            android:gravity="center|top"
+            android:background="@drawable/post_recyclerview_background"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_margin="10dp"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/allAvailableRide_RV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:layout_marginBottom="34dp"
+                tools:listitem="@layout/allposted_ride_recyclerview_format"/>
 
 
         </LinearLayout>
