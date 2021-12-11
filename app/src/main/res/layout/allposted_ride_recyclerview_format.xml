@@ -17,6 +17,13 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="ownerId"
+                android:visibility="gone"/>
+
+            <TextView
                 android:id="@+id/pickup_name"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

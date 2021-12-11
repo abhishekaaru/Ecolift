@@ -65,9 +65,10 @@ class SearchActivity : AppCompatActivity() {
 
                             progressBar.visibility = View.GONE
                             val responseBody = response.body()!!
+
                             if(responseBody.isNotEmpty()) {
                                 AllAvailableRide.layoutManager = LinearLayoutManager(this@SearchActivity)
-                                val adapter = SearchAvailableRideRecylerView()
+                                val adapter = SearchAvailableRideRecylerView(this@SearchActivity)
                                 adapter.updateAll(responseBody)
                                 AllAvailableRide.adapter = adapter
                                 Log.d("succes", responseBody.toString())

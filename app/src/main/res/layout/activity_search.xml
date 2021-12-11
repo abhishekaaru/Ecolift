@@ -81,7 +81,8 @@
                             android:id="@+id/search_dest"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/search_ride_background" />
+                            android:background="@drawable/search_ride_background"
+                            tools:ignore="TouchTargetSizeCheck" />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
