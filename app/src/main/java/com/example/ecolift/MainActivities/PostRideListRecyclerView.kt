@@ -30,12 +30,12 @@ class PostRideListRecyclerView: RecyclerView.Adapter<PostRideListRecyclerView.Po
 
     override fun onBindViewHolder(holder:PostListAdapter, position: Int) {
         val positionOnScreen = allPostRideList[position]
-        holder.pickup.text = positionOnScreen.pickup
-        holder.destination.text = positionOnScreen.destination
-        holder.date.text = positionOnScreen.date
-        holder.time.text = positionOnScreen.time
-        holder.seats.text = positionOnScreen.seats
-        holder.amount.text = positionOnScreen.amount
+        holder.pickup.text = "Pickup: " + positionOnScreen.pickup
+        holder.destination.text = "Destination: " +   positionOnScreen.destination
+        holder.date.text = "Date: " +  positionOnScreen.date
+        holder.time.text = "Time: " + positionOnScreen.time
+        holder.seats.text = "Seats: " + positionOnScreen.seats
+        holder.amount.text = "Amount: " + positionOnScreen.amount
     }
 
     override fun getItemCount(): Int {

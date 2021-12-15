@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ServiceBuilder {
 
-    private val BASE_URL = "http://192.168.43.107:3000"
+    private val BASE_URL = "https://ecolift.herokuapp.com"
 
     val retrofitBuilder = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
