@@ -31,4 +31,8 @@ interface getInterface {
     @POST("/searchRide")
     fun getAvailableRide(@Header("Authorization")  token:String, @Body request: Search_dataClass): Call<List<AllPostedRide>>
 
+
+    @POST("/CreateTravller")
+    fun createTravller(@Header("Authorization")  token:String, @Body request: Search_dataClass): Call<CreateTravllerResponse>
+
 }

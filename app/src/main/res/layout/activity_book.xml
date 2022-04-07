@@ -81,33 +81,6 @@
                         android:textColor="@color/white"
                         android:layout_margin="5dp"/>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-
-                        <TextView
-                            android:id="@+id/ride_date"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="match_parent"
-                            android:text="Date"
-                            android:textColor="@color/white"
-                            android:layout_margin="5dp"/>
-
-                        <TextView
-                            android:id="@+id/ride_time"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="match_parent"
-                            android:text="Time"
-                            android:textColor="@color/white"
-                            android:layout_margin="5dp"/>
-
-
-                    </LinearLayout>
-
                 </LinearLayout>
 
 
@@ -162,25 +135,6 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/book_id_label"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin"
-                        android:hint="ID no."
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/book_name_lable"
-                        app:startIconDrawable="@drawable/id_icon">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/book_id"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:singleLine="true" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/book_mobile_label"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -191,7 +145,7 @@
                         app:layout_constraintBottom_toTopOf="@+id/book_email_label"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/book_id_label">
+                        app:layout_constraintTop_toBottomOf="@+id/book_name_lable">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/book_mobile"
@@ -221,57 +175,15 @@
                             android:singleLine="true" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/book_seat_label"
-                        android:layout_width="175dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin"
-                        android:hint="Seat"
-                        app:startIconDrawable="@drawable/group_icon"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        app:layout_constraintBottom_toTopOf="@+id/book_action"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/book_email_label">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/book_seat"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="number"
-                            android:singleLine="true" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/book_price_label"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="@dimen/margin"
-                        android:hint="Price"
-                        app:startIconDrawable="@drawable/money_icon"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        app:layout_constraintBottom_toBottomOf="@+id/book_seat_label"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/book_seat_label"
-                        app:layout_constraintTop_toBottomOf="@+id/book_email_label">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/book_price"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="number"
-                            android:singleLine="true" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
                     <Button
-                        android:id="@+id/book_action"
+                        android:id="@+id/book_action_btn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
                         android:text="Book"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/book_seat_label" />
+                        app:layout_constraintTop_toBottomOf="@+id/book_email_label" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

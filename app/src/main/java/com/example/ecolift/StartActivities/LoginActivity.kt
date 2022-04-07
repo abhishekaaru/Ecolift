@@ -8,9 +8,11 @@ import android.util.Log
 import com.google.android.material.textfield.TextInputEditText
 import android.view.View
 import android.widget.*
+import com.example.ecolift.BookRideActivities.BookActivity
 import com.example.ecolift.Data_Classes.LoginRequest
 import com.example.ecolift.Data_Classes.LoginResponse
 import com.example.ecolift.MainActivities.MainActivity
+import com.example.ecolift.MainActivities.MainFragment
 import com.example.ecolift.R
 import com.example.ecolift.Retrofit.ServiceBuilder
 import com.example.ecolift.Retrofit.SessionManager
@@ -93,9 +95,6 @@ class LoginActivity : AppCompatActivity() {
                         val myStringBuilder = StringBuilder()
                         progressBar.visibility = View.GONE
                         sessionManager.saveAuthToken(loginResponse.authToken)
-
-
-                        Log.d("success login", myStringBuilder.append(loginResponse.user).toString())
                         Toast.makeText(this@LoginActivity, "Logged In", Toast.LENGTH_SHORT).show()
                         startActivity(intent)
                         finish()
