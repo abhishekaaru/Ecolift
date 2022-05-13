@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -47,6 +48,7 @@ class SearchActivity : AppCompatActivity() {
         val pickup = findViewById<TextInputEditText>(R.id.search_pickup)
         val destination = findViewById<TextInputEditText>(R.id.search_dest)
         val AllAvailableRide = findViewById<RecyclerView>(R.id.allAvailableRide_RV)
+        val ownerName = findViewById<TextView>(R.id.owner_name_search_activity)
         progressBar.visibility = View.VISIBLE
 
 

@@ -52,7 +52,7 @@ class SearchAvailableRideRecylerView(val context: Context): RecyclerView.Adapter
         holder.time.text = "Time: " + positionOnScreen.time
         holder.seats.text = "Seats: " + positionOnScreen.seats
         holder.amount.text = "Amount: " + positionOnScreen.amount
-        holder.owner_id.text = positionOnScreen.owner
+        holder.owner_id.text = positionOnScreen._id
     }
 
     override fun getItemCount(): Int {

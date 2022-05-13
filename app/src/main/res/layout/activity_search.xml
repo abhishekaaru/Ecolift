@@ -31,6 +31,15 @@
                     android:textSize="20sp"
                     android:gravity="center"/>
 
+                <TextView
+                    android:id="@+id/owner_name_search_activity"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="owner name"
+                    android:visibility="gone"/>
+
+
+
 
 
             </LinearLayout>
